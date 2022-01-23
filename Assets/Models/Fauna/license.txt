@@ -1,0 +1,11 @@
+Model Information:
+* title:	Ceres Fauna - Hololive EN Council
+* source:	https://sketchfab.com/3d-models/ceres-fauna-hololive-en-council-1d05a89b1253426d85301bc505bd12fb
+* author:	TwiIight (https://sketchfab.com/TwiIight3D)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Ceres Fauna - Hololive EN Council" (https://sketchfab.com/3d-models/ceres-fauna-hololive-en-council-1d05a89b1253426d85301bc505bd12fb) by TwiIight (https://sketchfab.com/TwiIight3D) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
