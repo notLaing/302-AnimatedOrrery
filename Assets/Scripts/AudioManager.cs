@@ -39,7 +39,7 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        Play("Theme");
+        PlayUninterrupted("Theme");
     }
 
     // play sound based on input name

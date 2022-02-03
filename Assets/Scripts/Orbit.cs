@@ -18,6 +18,9 @@ public class Orbit : MonoBehaviour
 
     LineRenderer path;
 
+    UI uiObj;
+    float time = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +29,8 @@ public class Orbit : MonoBehaviour
         path.useWorldSpace = true;
         path.startWidth = .05f;
         path.endWidth = .05f;
+
+        uiObj = FindObjectOfType<UI>();
 
         if(moon) moonAway.Normalize();
 
@@ -37,10 +42,13 @@ public class Orbit : MonoBehaviour
     {
         if (!orbitCenter) return;
 
+        if (!uiObj.rewinding) time += Time.deltaTime;
+        else time -= Time.deltaTime;
+
         if (!moon)
         {
-            float x = Mathf.Cos((Time.time * orbitSpeed) + offsetTime) * radius;
-            float z = Mathf.Sin((Time.time * orbitSpeed) + offsetTime) * radius;
+            float x = Mathf.Cos((time * orbitSpeed) + offsetTime) * radius;
+            float z = Mathf.Sin((time * orbitSpeed) + offsetTime) * radius;
 
             transform.position = new Vector3(x, 0, z) + orbitCenter.position;
 
@@ -58,7 +66,7 @@ public class Orbit : MonoBehaviour
             }
             //after moon is facing planet, do the thing Earth's moon does: pretty much just face the planet and orbit to the moon's side
             //set a Vec3 at the start to be the original transform.up. This way the moon can still orbit independently of its spin (i.e. if a moon's up direction changes from spin, it still orbits)
-            transform.RotateAround(orbitCenter.position, moonUp, orbitSpeed * Time.time);
+            transform.RotateAround(orbitCenter.position, moonUp, orbitSpeed * time);
 
             if (orbitCenter.hasChanged) UpdateMoonOrbitPath();
         }
@@ -103,7 +111,7 @@ public class Orbit : MonoBehaviour
             transform.RotateAround(orbitCenter.position, moonUp, -i * degPerCircle / pathResolution);
         }
         //reset to the position/rotation it should be
-        transform.RotateAround(orbitCenter.position, moonUp, orbitSpeed * Time.time);
+        transform.RotateAround(orbitCenter.position, moonUp, orbitSpeed * time);
         transform.GetComponent<Spin>().MoonRotate();
         path.positionCount = pathResolution;
         path.SetPositions(pts);
