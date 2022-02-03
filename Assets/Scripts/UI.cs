@@ -7,6 +7,7 @@ public class UI : MonoBehaviour
 {
     public AudioMixer audioMixer;
     public Transform subaru, ina, ame, gura, kiara, calli;
+    public GameObject orbitCam, flightCam;
     public bool rewinding = false;
 
     public void Play()
@@ -40,26 +41,43 @@ public class UI : MonoBehaviour
 
     public void LookAt(int select)
     {
-        OrbitCameraRig cam = FindObjectOfType<OrbitCameraRig>();
+        OrbitCameraRig cam = orbitCam.GetComponent<OrbitCameraRig>();
         switch(select)
         {
             case 0://all
-                cam.target = subaru;
+                orbitCam.SetActive(false);
+                flightCam.SetActive(true);
+                //cam.target = subaru;
                 break;
             case 1://Calli
-                cam.target = calli;
+                flightCam.SetActive(false);
+                orbitCam.SetActive(true);
+                orbitCam.GetComponent<OrbitCameraRig>().target = calli;
                 break;
             case 2://Kiara
-                cam.target = kiara;
+                flightCam.SetActive(false); 
+                orbitCam.SetActive(true);
+                orbitCam.GetComponent<OrbitCameraRig>().target = kiara;
                 break;
             case 3://Gura
-                cam.target = gura;
+                flightCam.SetActive(false); 
+                orbitCam.SetActive(true);
+                orbitCam.GetComponent<OrbitCameraRig>().target = gura;
                 break;
             case 4://Ame
-                cam.target = ame;
+                flightCam.SetActive(false); 
+                orbitCam.SetActive(true);
+                orbitCam.GetComponent<OrbitCameraRig>().target = ame;
                 break;
             case 5://Ina
-                cam.target = ina;
+                flightCam.SetActive(false); 
+                orbitCam.SetActive(true);
+                orbitCam.GetComponent<OrbitCameraRig>().target = ina;
+                break;
+            case 6://all
+                flightCam.SetActive(false); 
+                orbitCam.SetActive(true);
+                orbitCam.GetComponent<OrbitCameraRig>().target = subaru;
                 break;
         }
     }

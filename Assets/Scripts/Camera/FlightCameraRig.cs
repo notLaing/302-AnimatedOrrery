@@ -12,7 +12,7 @@ public class FlightCameraRig : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -24,13 +24,14 @@ public class FlightCameraRig : MonoBehaviour
 
         Vector3 dir = (transform.forward * v) + (transform.right * h);
         dir.Normalize();
-        transform.position += dir * Time.deltaTime * speed;
+        transform.position += dir * Time.unscaledDeltaTime * speed;
 
         //update rotation - yaw (left/right), pitch (up/down), roll (take a guess)
         mx = Input.GetAxis("Mouse X");//yaw (Y)
         my = Input.GetAxis("Mouse Y");//pitch (X)
 
         yaw += mx * mouseSensitivityX;
+        yaw = Mathf.Clamp(yaw, -89f, 89f);
         pitch += my * mouseSensitivityY;
         pitch = Mathf.Clamp(pitch, -89f, 89f);
 
