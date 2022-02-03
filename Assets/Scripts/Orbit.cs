@@ -24,8 +24,8 @@ public class Orbit : MonoBehaviour
         path = GetComponent<LineRenderer>();
         path.loop = true;
         path.useWorldSpace = true;
-        path.startWidth = .1f;
-        path.endWidth = .1f;
+        path.startWidth = .05f;
+        path.endWidth = .05f;
 
         if(moon) moonAway.Normalize();
 
