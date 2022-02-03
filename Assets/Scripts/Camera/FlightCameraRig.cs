@@ -26,6 +26,16 @@ public class FlightCameraRig : MonoBehaviour
         dir.Normalize();
         transform.position += dir * Time.unscaledDeltaTime * speed;
 
+        //bound the position
+        if (transform.position.x < -140f) transform.position = new Vector3(-140f, transform.position.y, transform.position.z);
+        else if (transform.position.x > 140f) transform.position = new Vector3(140f, transform.position.y, transform.position.z);
+
+        if (transform.position.y < -70f) transform.position = new Vector3(transform.position.x, -70f, transform.position.z);
+        else if (transform.position.y > 70f) transform.position = new Vector3(transform.position.x, 70f, transform.position.z);
+
+        if (transform.position.z < -65f) transform.position = new Vector3(transform.position.x, transform.position.y, -65f);
+        else if (transform.position.z > 65f) transform.position = new Vector3(transform.position.x, transform.position.y, 65f);
+
         //update rotation - yaw (left/right), pitch (up/down), roll (take a guess)
         mx = Input.GetAxis("Mouse X");//yaw (Y)
         my = Input.GetAxis("Mouse Y");//pitch (X)
